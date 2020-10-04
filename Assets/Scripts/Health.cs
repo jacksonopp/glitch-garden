@@ -30,7 +30,17 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        TriggerDeathVFX();
         Destroy(gameObject);
+    }
+
+    private void TriggerDeathVFX()
+    {
+        if (!explosionVFX)
+        {
+            return;
+        }
+        GameObject vfx = Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        Destroy(vfx, .5f);
     }
 }
