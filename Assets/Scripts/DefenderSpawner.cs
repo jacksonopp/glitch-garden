@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DefenderSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject spawnObject;
+    Defender defender;
+
     private void OnMouseDown()
     {
         Debug.Log("I was clicked!");
@@ -27,7 +28,11 @@ public class DefenderSpawner : MonoBehaviour
 
     private void SpawnDefender(Vector2 coordinates)
     {
-        GameObject defender = Instantiate(spawnObject, coordinates, Quaternion.identity) as GameObject;
-        Debug.Log(coordinates);
+        Defender newDefender = Instantiate(defender, coordinates, Quaternion.identity) as Defender;
+    }
+
+    public void SetSelectedDefender(Defender defenderToSelect)
+    {
+        defender = defenderToSelect;
     }
 }
